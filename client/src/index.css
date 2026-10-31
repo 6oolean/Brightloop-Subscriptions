@@ -1,0 +1,37 @@
+@import '@fontsource/ibm-plex-sans/400.css';
+@import '@fontsource/ibm-plex-sans/500.css';
+@import '@fontsource/ibm-plex-sans/600.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { font-feature-settings: 'tnum' 1; }
+  body { @apply bg-paper text-ink font-sans antialiased; }
+  :focus-visible { @apply outline outline-2 outline-offset-2 outline-brand; }
+}
+@layer components {
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded px-3.5 py-2 text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed; }
+  .btn-primary { @apply btn bg-brand text-white hover:bg-brand-dark; }
+  .btn-ghost { @apply btn border border-line bg-surface text-ink hover:bg-paper; }
+  .btn-danger { @apply btn border border-bad/30 bg-surface text-bad hover:bg-bad-soft; }
+  .input { @apply w-full rounded border border-line bg-surface px-3 py-2 text-sm placeholder:text-muted/70 focus:border-brand; }
+  .input-error { @apply border-bad; }
+  .card { @apply rounded-lg border border-line bg-surface; }
+}
+
+/* Tables become stacked cards on phones; each cell shows its column name from data-label */
+@media (max-width: 767px) {
+  table.responsive thead { display: none; }
+  table.responsive, table.responsive tbody, table.responsive tr, table.responsive td { display: block; width: 100%; }
+  table.responsive tr { border-bottom: 1px solid #dfe3dc; padding: 10px 14px; }
+  table.responsive td { display: flex; justify-content: space-between; gap: 12px; padding: 3px 0; text-align: right; }
+  table.responsive td::before { content: attr(data-label); color: #5d6875; text-align: left; font-size: 13px; }
+  table.responsive td[data-label=""]::before { display: none; }
+}
+@media print {
+  .no-print { display: none !important; }
+  body { background: #fff; }
+  .print-sheet { border: 0 !important; box-shadow: none !important; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
