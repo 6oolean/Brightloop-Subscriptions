@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@fontsource/ibm-plex-sans": "^5.3.0",
+    "brightloop-subscriptions": "file:..",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "react-router-dom": "^7.18.5",
